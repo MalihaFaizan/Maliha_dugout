@@ -1,88 +1,81 @@
-class Player:
-    # constructor
-    def __init__(self, player_id, name, role, franchise, credits):
-        self.player_id = player_id
-        self.name = name
-        self.role = role            # WK, AT, AR or BOWL
-        self.franchise = franchise  # price in the fantasy game
-        self.credits = credits
+from pathlib import Path
+from Maliha_dugout.loader import (
+    load_players,
+    load_team,
+    load_teams,
+)
+from Maliha_dugout.models import League
+from Maliha_dugout.rules import MAX_CREDITS
 
-    def __str__(self):
-        return f"{self.name} ({self.franchise}, {self.role}, {self.credits}cr)"
+BASE = Path(__file__).resolve().parent.parent
 
-#Creating the 5 players including Babar
+def show_pool(players):
+    by_franchise = {}
+    by_role = {}
+    for player in players.values():
+        by_franchise[player.franchise] = by_franchise.get(player.franchise, 0) + 1
+        by_role[player.role] = by_role.get(player.role, 0) + 1
+    print(f"Player pool: {len(players)} players")
+    print("Players by franchise:")
+    for franchise in sorted(by_franchise):
+        print(f"  {franchise}: {by_franchise[franchise]}")
+    print("Players by role:")
+    for role in sorted(by_role):
+        print(f"  {role}: {by_role[role]}")
 
-babar = Player("P089", "Babar Azam", "BAT", "Peshawar Zalmi", 10.5)
-Mohommad_Haris = Player("P087", "Mohommad Haris", "WK", "Peshawar Zalmi", 7.5)
-Iftikhar_Ahmed = Player("PO94", "Iftikhar Ahmed", "AR", "Peshawar Zalmi" , 7.5)
-Shaheen_Shah_Afridi = Player("PO68", "Shaheen Shah Afridi", "BOWL", "Lahore Qalandars" , 10.5)
-Shan_Masood = Player("PO76", "Shan Masood", "BAT", "Multan Sultans" , 6.0)
-             
-class FantasyTeam:
-    """A fantasy XI picked by one person"""
+def show_team(team):
+    print(f"\nTeam {team.team_name} by {team.owner}:")
+    for player in team.players:
+        print(f"  {player}")
+    print(f"Total credits: {team.total_credits():.1f}")
+    print(f"Captain: {team.captain.name}, Vice-captain: {team.vice_captain.name}")
 
-    def __init__(self, team_name, owner):
-        self.team_name = team_name
-        self.owner = owner
-        self.players = []
-        self.captain = None
-        self.vice_captain = None
+def show_verdict(team):
+    errors = team.check_rules()
+    if errors:
+        print("ILLEGAL:")
+        for error in errors:
+            print(f"  - {error}")
+    else:
+        print("LEGAL")
+    return errors
 
-    def add_player(self, player):
-        self.players.append(player)
+def main():
+    players = load_players(BASE / "data" / "players.csv")
+    show_pool(players)
+    teams = load_teams(BASE / "data" / "sample_teams.csv", players)
+    legal, illegal = [], []
+    for team in teams:
+        show_team(team)
+        if show_verdict(team):
+            illegal.append(team)
+        else:
+            legal.append(team)
+    print(f"\nSummary: {len(legal)} legal, {len(illegal)} illegal out of {len(teams)} teams")
+    print("Legal teams:")
+    for team in legal:
+        print(f"  {team.team_name}")
+    print("Illegal teams:")
+    for team in illegal:
+        print(f"  {team.team_name}")
 
-    def total_credits(self):
-        total=0
-        for p in self.players:
-            total = total + p.credits
-        return total
+    print("\nMY TEAM (EXAMPLE: replace with your form-submitted XI)")
+    my_team = load_team(BASE / "data" / "my_team.csv", players)
+    if my_team is None:
+        raise ValueError("data/my_team.csv must contain your team")
+    show_team(my_team)
+    print(f"Credits left: {MAX_CREDITS - my_team.total_credits():.1f}")
+    show_verdict(my_team)
 
-    def count_by_role(self):
-        counts = {"WK" :0, "BAT": 0, "AR": 0, "BOWL":0}
-        for p in self.players:
-            counts[p.role] = counts[p.role] + 1
-        return counts
+    league = League("The Dugout")
+    for team in teams:
+        league.add_team(team)
+    league.add_team(my_team)
+    print("\nLEAGUE TABLE (cheapest first)")
+    print(f"{'Team':28} {'Owner':16} {'Credits':>8}  Status")
+    for team in league.rank_teams():
+        verdict = "ILLEGAL" if team.check_rules() else "LEGAL"
+        print(f"{team.team_name:28} {team.owner:16} {team.total_credits():8.1f}  {verdict}")
 
-    def set_captain(self, captain, vice_captain):
-        self.captain = captain
-        self.vice_captain = vice_captain
-
-    def __str__(self):
-        size = len(self.players)
-        cost = self.total_credits()
-        return f"{self.team_name} (owner: {self.owner}, {size} players, {cost} cr)"
-
-    # Create your 11 players
-rizwan = Player("P122", "Mohammad Rizwan", "WK", "Rawalpindiz", 10.5)
-babar = Player("P089", "Babar Azam", "BAT", "Peshawar Zalmi", 10.5)
-warner= Player("P037", "DA Warner",  "BAT", "Karachi Kings", 9.5)
-shan = Player("P076", "Shan Masood", "BAT", "Multan Sultans", 6.0)
-haider = Player("P021", "Haider Ali", "BAT", "Islamabad United", 6.0)
-iftikhar = Player("P094", "Iftikhar Ahmed", "AR", "Peshawar Zalmi", 7.5)
-shadab = Player("P029", "Shadab Khan", "AR", "Islamabad United", 10.5)
-shaheen = Player("P068", "Shaheen Shah Afridi", "BOWL", "Lahore Qalandars", 10.5)
-haris = Player("P066", "Haris Rauf", "BOWL", "Lahore Qalandars", 7.5)
-naseem = Player("P140", "Naseem Shah", "BOWL", "Rawalpindiz", 8.0)
-hasnain = Player("P031", "Mohammad Hasnain", "BOWL", "Islamabad United", 6.0)
-
-    # Build your team
-team=FantasyTeam("YorkerKings", "Maliha")
-team.add_player(rizwan)
-team.add_player(babar)
-team.add_player(warner)
-team.add_player(shan)
-team.add_player(haider)
-team.add_player(iftikhar)
-team.add_player(shadab)
-team.add_player(shaheen)
-team.add_player(haris)
-team.add_player(naseem)
-team.add_player(hasnain)
-
-    # Set Captain and Vice_Captain
-team.set_captain(babar, shaheen)
-
-    # Print output
-print(team)
-print("Roles:" , team.count_by_role())
-print("Captain:", team.captain)
+if __name__ == "__main__":
+    main()
