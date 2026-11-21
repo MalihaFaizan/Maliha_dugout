@@ -36,4 +36,12 @@ def load_team(path, players):
 def load_teams(path, players):
     """Return every team in a team CSV."""
     with open(path, newline="", encoding="utf-8-sig") as file:
-        return [team_from_row(row, players) for row in csv.DictReader(file)]
+         return [team_from_row(row, players) for row in csv.DictReader(file)]
+    
+
+def read_team_rows(path):
+    """Return the raw rows of a teams CSV file, without building any teams."""
+ 
+    with open(path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+

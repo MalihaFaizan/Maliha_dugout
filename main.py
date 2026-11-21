@@ -1,13 +1,18 @@
 from pathlib import Path
+from Maliha_dugout.loader import load_players
+from Maliha_dugout.errors import InvalidTeamError, PlayerNotFoundError
 from Maliha_dugout.loader import (
     load_players,
     load_team,
     load_teams,
+    read_team_rows,
+    team_from_row 
+
 )
 from Maliha_dugout.models import League
 from Maliha_dugout.rules import MAX_CREDITS
 
-BASE = Path(__file__).resolve().parent.parent
+BASE = Path(__file__).resolve().parent
 
 def show_pool(players):
     by_franchise = {}
@@ -39,6 +44,34 @@ def show_verdict(team):
     else:
         print("LEGAL")
     return errors
+
+def report(team_name, problems):
+    """Print one verdict. An empty list of problems means the team is legal."""
+ 
+    if not problems:
+        print(f"  {team_name}: LEGAL")
+        return
+ 
+    print(f"  {team_name}: REJECTED")
+    for problem in problems:
+        print(f"    - {problem}")
+ 
+ 
+def report_on_row(row, players):
+    """Build one team from a CSV row and say whether it is legal."""
+ 
+    try:
+        team = team_from_row(row, players)
+        team.validate()
+    except PlayerNotFoundError as error:
+        report(row["team_name"], [str(error)])
+    except InvalidTeamError as error:
+        report(error.team_name, error.problems)
+    else:
+        report(team.team_name, [])
+
+
+
 
 def main():
     players = load_players(BASE / "data" / "players.csv")
@@ -76,6 +109,13 @@ def main():
     for team in league.rank_teams():
         verdict = "ILLEGAL" if team.check_rules() else "LEGAL"
         print(f"{team.team_name:28} {team.owner:16} {team.total_credits():8.1f}  {verdict}")
+
+    print("\nThe six teams the league office could not accept")
+    for row in read_team_rows(BASE / "data"/ "sample_teams.csv"):
+        report_on_row( row, players)
+ 
+    print("\nDone. Six teams were refused and the program did not crash.")
+
 
 if __name__ == "__main__":
     main()

@@ -8,6 +8,18 @@ from Maliha_dugout.rules import (
 )
 
 
+from Maliha_dugout.errors import InvalidTeamError, PlayerNotFoundError
+ 
+ 
+def find_player(players, player_id):
+    """Return the Player with this id, or raise PlayerNotFoundError."""
+ 
+    if player_id not in players:
+        raise PlayerNotFoundError(player_id)
+ 
+    return players[player_id]
+
+
 
 
 
@@ -89,6 +101,17 @@ class FantasyTeam:
         size = len(self.players)
         cost = self.total_credits()
         return f"{self.team_name} (owner: {self.owner}, {size} players, {cost} cr)"
+
+    def validate(self):
+        """Raise InvalidTeamError if the
+        team breaks any rule."""
+ 
+        problems = self.check_rules()
+ 
+        if problems:
+            raise InvalidTeamError(
+                self.team_name, problems)
+
 
 
 class League:
