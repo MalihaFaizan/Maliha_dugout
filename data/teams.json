@@ -1,0 +1,21 @@
+[
+  {
+    "team_name": "Yorker Kings",
+    "owner": "Maliha",
+    "player_ids": [
+      "P089",
+      "P068",
+      "P087",
+      "P021",
+      "P076",
+      "P075",
+      "P094",
+      "P029",
+      "P031",
+      "P015",
+      "P117"
+    ],
+    "captain": "P089",
+    "vice_captain": "P068"
+  }
+]

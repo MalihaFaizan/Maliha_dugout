@@ -43,8 +43,20 @@ class Player:
             float(row["credits"])
         )
 
+    
     def __str__(self):
-        return f"{self.name} ({self.franchise}, {self.role}, {self.credits} cr)"
+       return f"{self.name} ({self.franchise}, {self.role}, {self.credits} cr)"
+
+
+    def to_dict(self):
+        return {
+            "player_id": self.player_id,
+            "name" : self.name,
+            "franchise": self.franchise,
+            "role" : self.role,
+            "credits" : self.credits,
+
+        }
 
 
 class FantasyTeam:
@@ -111,6 +123,29 @@ class FantasyTeam:
         if problems:
             raise InvalidTeamError(
                 self.team_name, problems)
+
+    def to_dict(self):
+        """Return this team as a dict of plain values, ready to save as JSON."""
+        return {
+            "team_name": self.team_name,
+            "owner": self.owner,
+            "player_ids": [player.player_id for player in self.players],
+            "captain": self.captain.player_id if self.captain else None,
+            "vice_captain": self.vice_captain.player_id if self.vice_captain else None,
+        }
+
+    @classmethod
+    def from_dict(cls, data, players):
+        """Build a FantasyTeam from a dict such as to_dict() produces."""
+        team = cls(data["team_name"], data["owner"])
+        for player_id in data["player_ids"]:
+            team.add_player(players[player_id])
+        if data.get("captain"):
+            team.set_captain(
+                players[data["captain"]],
+                players[data["vice_captain"]] if data.get("vice_captain") else None,
+            )
+        return team
 
 
 
