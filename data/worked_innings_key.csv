@@ -1,0 +1,6 @@
+innings_id,batter,role,runs,balls_faced,fours,sixes,out,run_points,boundary_points,milestone_bonus,duck_penalty,strike_rate,batting_points
+I1,Sahibzada Farhan,WK,106,56,7,8,0,106,23,32,0,189.29,161
+I2,Shamyl Hussain,BAT,54,38,3,3,1,54,9,16,0,142.11,79
+I3,Irfan Khan,BAT,33,25,2,2,1,33,6,8,0,132.0,47
+I4,RR Rossouw,BAT,0,5,0,0,1,0,0,0,-2,0.0,-2
+I5,AS Joseph,BOWL,0,1,0,0,1,0,0,0,0,0.0,0

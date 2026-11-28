@@ -1,0 +1,5 @@
+spell_id,bowler,overs_bowled,legal_balls,runs_conceded,wickets,bowled_or_lbw,maidens,wicket_points,bowled_lbw_bonus,maiden_points,haul_bonus,economy,bowling_points
+S1,Shaheen Shah Afridi,4.0,24,18,4,0,0,100,0,0,8,4.5,108
+S2,Abrar Ahmed,4.0,24,23,3,0,0,75,0,0,4,5.75,79
+S3,Shadab Khan,4.0,24,23,3,1,0,75,8,0,4,5.75,87
+S4,A Zampa,4.0,24,11,2,1,1,50,8,12,0,2.75,70

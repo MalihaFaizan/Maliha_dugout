@@ -1,0 +1,100 @@
+spell_id,match,bowler,over,ball_in_over,runs_conceded,legal_ball,wicket_credited,bowled_or_lbw
+S1,match_06,Shaheen Shah Afridi,0,1,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,0,2,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,0,3,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,0,4,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,0,5,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,0,6,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,2,1,2,1,0,0
+S1,match_06,Shaheen Shah Afridi,2,2,0,1,1,0
+S1,match_06,Shaheen Shah Afridi,2,3,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,2,4,0,1,1,0
+S1,match_06,Shaheen Shah Afridi,2,5,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,2,6,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,1,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,2,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,3,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,4,4,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,5,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,4,6,1,0,0,0
+S1,match_06,Shaheen Shah Afridi,4,7,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,14,1,0,1,1,0
+S1,match_06,Shaheen Shah Afridi,14,2,1,1,0,0
+S1,match_06,Shaheen Shah Afridi,14,3,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,14,4,1,0,0,0
+S1,match_06,Shaheen Shah Afridi,14,5,4,1,0,0
+S1,match_06,Shaheen Shah Afridi,14,6,0,1,0,0
+S1,match_06,Shaheen Shah Afridi,14,7,0,1,1,0
+S2,match_05,Abrar Ahmed,1,1,0,1,0,0
+S2,match_05,Abrar Ahmed,1,2,0,1,1,0
+S2,match_05,Abrar Ahmed,1,3,0,1,0,0
+S2,match_05,Abrar Ahmed,1,4,4,1,0,0
+S2,match_05,Abrar Ahmed,1,5,0,1,0,0
+S2,match_05,Abrar Ahmed,1,6,0,1,0,0
+S2,match_05,Abrar Ahmed,5,1,0,1,1,0
+S2,match_05,Abrar Ahmed,5,2,0,1,0,0
+S2,match_05,Abrar Ahmed,5,3,0,1,0,0
+S2,match_05,Abrar Ahmed,5,4,1,1,0,0
+S2,match_05,Abrar Ahmed,5,5,0,1,0,0
+S2,match_05,Abrar Ahmed,5,6,1,1,0,0
+S2,match_05,Abrar Ahmed,11,1,0,1,0,0
+S2,match_05,Abrar Ahmed,11,2,1,1,0,0
+S2,match_05,Abrar Ahmed,11,3,4,1,0,0
+S2,match_05,Abrar Ahmed,11,4,0,1,0,0
+S2,match_05,Abrar Ahmed,11,5,1,1,0,0
+S2,match_05,Abrar Ahmed,11,6,1,1,0,0
+S2,match_05,Abrar Ahmed,17,1,1,1,0,0
+S2,match_05,Abrar Ahmed,17,2,6,1,0,0
+S2,match_05,Abrar Ahmed,17,3,0,1,0,0
+S2,match_05,Abrar Ahmed,17,4,1,1,0,0
+S2,match_05,Abrar Ahmed,17,5,1,1,0,0
+S2,match_05,Abrar Ahmed,17,6,1,0,0,0
+S2,match_05,Abrar Ahmed,17,7,0,1,1,0
+S3,match_08,Shadab Khan,6,1,0,1,0,0
+S3,match_08,Shadab Khan,6,2,4,1,0,0
+S3,match_08,Shadab Khan,6,3,1,1,0,0
+S3,match_08,Shadab Khan,6,4,1,1,0,0
+S3,match_08,Shadab Khan,6,5,1,1,0,0
+S3,match_08,Shadab Khan,6,6,1,1,0,0
+S3,match_08,Shadab Khan,8,1,0,1,1,0
+S3,match_08,Shadab Khan,8,2,0,1,0,0
+S3,match_08,Shadab Khan,8,3,0,1,0,0
+S3,match_08,Shadab Khan,8,4,1,1,0,0
+S3,match_08,Shadab Khan,8,5,6,1,0,0
+S3,match_08,Shadab Khan,8,6,0,1,0,0
+S3,match_08,Shadab Khan,11,1,1,1,0,0
+S3,match_08,Shadab Khan,11,2,1,1,0,0
+S3,match_08,Shadab Khan,11,3,0,1,0,0
+S3,match_08,Shadab Khan,11,4,0,1,1,1
+S3,match_08,Shadab Khan,11,5,0,1,1,0
+S3,match_08,Shadab Khan,11,6,0,1,0,0
+S3,match_08,Shadab Khan,13,1,2,1,0,0
+S3,match_08,Shadab Khan,13,2,1,1,0,0
+S3,match_08,Shadab Khan,13,3,0,1,0,0
+S3,match_08,Shadab Khan,13,4,1,1,0,0
+S3,match_08,Shadab Khan,13,5,1,1,0,0
+S3,match_08,Shadab Khan,13,6,1,1,0,0
+S4,match_06,A Zampa,7,1,0,1,0,0
+S4,match_06,A Zampa,7,2,1,1,0,0
+S4,match_06,A Zampa,7,3,1,1,0,0
+S4,match_06,A Zampa,7,4,1,1,0,0
+S4,match_06,A Zampa,7,5,0,1,0,0
+S4,match_06,A Zampa,7,6,0,1,1,0
+S4,match_06,A Zampa,9,1,1,1,0,0
+S4,match_06,A Zampa,9,2,0,1,0,0
+S4,match_06,A Zampa,9,3,1,1,0,0
+S4,match_06,A Zampa,9,4,1,1,0,0
+S4,match_06,A Zampa,9,5,1,1,0,0
+S4,match_06,A Zampa,9,6,0,1,0,0
+S4,match_06,A Zampa,13,1,0,1,0,0
+S4,match_06,A Zampa,13,2,1,1,0,0
+S4,match_06,A Zampa,13,3,1,1,0,0
+S4,match_06,A Zampa,13,4,0,1,0,0
+S4,match_06,A Zampa,13,5,1,1,0,0
+S4,match_06,A Zampa,13,6,1,1,0,0
+S4,match_06,A Zampa,17,1,0,1,1,1
+S4,match_06,A Zampa,17,2,0,1,0,0
+S4,match_06,A Zampa,17,3,0,1,0,0
+S4,match_06,A Zampa,17,4,0,1,0,0
+S4,match_06,A Zampa,17,5,0,1,0,0
+S4,match_06,A Zampa,17,6,0,1,0,0
